@@ -9,49 +9,50 @@ function Tecla(props) {
     const {filterWord} = vemTudoLogoPorraKKK;
     
     React.useEffect(() =>{
+        function liberarBotoes(){
+            if(vemTudoLogoPorraKKK.forcaPalavra !== "") {
+                setPressionado(false);
+            }
+        }
         liberarBotoes()
     }, [vemTudoLogoPorraKKK.forcaPalavra]);
 
     React.useEffect(() =>{
+        function verifyWin(){
+            let containsAll = true;
+    
+            (vemTudoLogoPorraKKK.forcaPalavra)
+            .split("")
+            .forEach((every, index) =>{
+                if( !(vemTudoLogoPorraKKK.alfabeto).includes(filterWord(every)) ){
+                    containsAll = false;
+                }
+            })
+            
+            if(containsAll) { return true };
+        }
+        
+        function verifyLose(){
+            if(vemTudoLogoPorraKKK.forcaLevel === 6){
+                return true
+            }
+        }
+    
+        function verifyEndGame(){
+            if(verifyLose()){
+                console.log("entrou aqui, e perdeu o jogo")
+                vemTudoLogoPorraKKK.endGame(false);
+            }
+            if(verifyWin()){
+                console.log("entrou aqui, e ganhou o jogo")
+                vemTudoLogoPorraKKK.endGame(true);
+            }
+        }
+        
         verifyEndGame();
     }, [pressionado]);
+
     
-    function verifyWin(){
-        let containsAll = true;
-
-        (vemTudoLogoPorraKKK.forcaPalavra)
-        .split("")
-        .forEach((every, index) =>{
-            if( !(vemTudoLogoPorraKKK.alfabeto).includes(filterWord(every)) ){
-                containsAll = false;
-            }
-        })
-        
-        if(containsAll) { return true };
-    }
-    
-    function verifyLose(){
-        if(vemTudoLogoPorraKKK.forcaLevel === 6){
-            return true
-        }
-    }
-
-    function verifyEndGame(){
-        if(verifyLose()){
-            console.log("entrou aqui, e perdeu o jogo")
-            vemTudoLogoPorraKKK.endGame(false);
-        }
-        if(verifyWin()){
-            console.log("entrou aqui, e ganhou o jogo")
-            vemTudoLogoPorraKKK.endGame(true);
-        }
-    }
-
-    function liberarBotoes(){
-        if(vemTudoLogoPorraKKK.forcaPalavra !== "") {
-            setPressionado(false);
-        }
-    }
 
     function adicionarLetra(inputletra){
         if( vemTudoLogoPorraKKK.forcaStatus === "Win" || 

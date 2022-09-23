@@ -9,6 +9,16 @@ function Resposta(props) {
     const [habilityInput, setHabilityInput] = React.useState(true);
     
     React.useEffect(()=>{
+        function disabledInput(){
+            if(
+                vemTudoLogoPorraKKK.forcaStatus === "Off" ||
+                vemTudoLogoPorraKKK.forcaStatus === "Win" ||
+                vemTudoLogoPorraKKK.forcaStatus === "Lose"
+            ) {
+                return true
+            }
+        }
+        
         if( disabledInput() ){ setHabilityInput(true) }
         else{ setHabilityInput(false) }
     }, [vemTudoLogoPorraKKK.forcaStatus])
@@ -28,15 +38,7 @@ function Resposta(props) {
         setInputPalavra("")
     }
 
-    function disabledInput(){
-        if(
-            vemTudoLogoPorraKKK.forcaStatus === "Off" ||
-            vemTudoLogoPorraKKK.forcaStatus === "Win" ||
-            vemTudoLogoPorraKKK.forcaStatus === "Lose"
-        ) {
-            return true
-        }
-    }
+    
 
     return (
         <RespostaStyle>
