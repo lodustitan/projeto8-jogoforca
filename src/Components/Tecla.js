@@ -4,40 +4,87 @@ import styled from "styled-components";
 import { Data } from "./Jogo";
 
 function Tecla(props) {
-    const [pressionado, setPressionado] = React.useState(false);    
-    const {
-        forcaLevel, setForcaLevel,
-        forcaStatus, setForcaStatus,
-        forcaPalavra, setForcaPalavra, 
-        alfabeto, setAlfabeto
-    } = React.useContext(Data);
+    const [pressionado, setPressionado] = React.useState(true);    
+    const vemTudoLogoPorraKKK = React.useContext(Data);
+    const {filterWord} = vemTudoLogoPorraKKK;
     
+    React.useEffect(() =>{
+        liberarBotoes()
+    }, [vemTudoLogoPorraKKK.forcaPalavra]);
+
+    React.useEffect(() =>{
+        verifyEndGame();
+    }, [pressionado]);
+    
+    function verifyWin(){
+        let containsAll = true;
+
+        (vemTudoLogoPorraKKK.forcaPalavra)
+        .split("")
+        .forEach((every, index) =>{
+            if( !(vemTudoLogoPorraKKK.alfabeto).includes(filterWord(every)) ){
+                containsAll = false;
+            }
+        })
+        
+        if(containsAll) { return true };
+    }
+    
+    function verifyLose(){
+        if(vemTudoLogoPorraKKK.forcaLevel === 6){
+            return true
+        }
+    }
+
+    function verifyEndGame(){
+        if(verifyLose()){
+            console.log("entrou aqui, e perdeu o jogo")
+            vemTudoLogoPorraKKK.endGame(false);
+        }
+        if(verifyWin()){
+            console.log("entrou aqui, e ganhou o jogo")
+            vemTudoLogoPorraKKK.endGame(true);
+        }
+    }
+
+    function liberarBotoes(){
+        if(vemTudoLogoPorraKKK.forcaPalavra !== "") {
+            setPressionado(false);
+        }
+    }
+
     function adicionarLetra(inputletra){
+        if( vemTudoLogoPorraKKK.forcaStatus === "Win" || 
+            vemTudoLogoPorraKKK.forcaStatus === "Lose"){
+            return;
+        }
         let letra = inputletra.split(",")
         let haveLetterInclude = false;
 
+        setPressionado(!pressionado);
+        
         if(!props.usado){
-            const novoAlfa = [...alfabeto, ...letra];
-            setAlfabeto(novoAlfa);
+            const novoAlfa = [...vemTudoLogoPorraKKK.alfabeto, ...letra];
+            vemTudoLogoPorraKKK.setAlfabeto(novoAlfa);
 
             letra.forEach(letter => { 
-                if(forcaPalavra.includes(letter)){
+                if(vemTudoLogoPorraKKK.forcaPalavra.includes(letter)){
                     haveLetterInclude = true;
                 }
             })
 
             if(haveLetterInclude === false){
-                setForcaLevel(forcaLevel + 1)
+                vemTudoLogoPorraKKK.setForcaLevel(vemTudoLogoPorraKKK.forcaLevel + 1)
             }
         }
     }
 
     return (
         <BotaoTecla 
+            data-identifier="letter"
             usado={pressionado}
             onClick={() => {
                 if(pressionado === false){ 
-                    setPressionado(!pressionado);
                     adicionarLetra(props.keyb);
                 }
             }}

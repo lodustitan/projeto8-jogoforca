@@ -16,14 +16,10 @@ import Letreiro from "./Letreiro";
 
 function Forca(props){
     const [foto, setFoto] = React.useState(forca0)
-    const {
-        forcaLevel, setForcaLevel,
-        forcaStatus, setForcaStatus,
-        forcaPalavra, setForcaPalavra
-    } = React.useContext(Data);
+    const vemTudoLogoPorraKKK = React.useContext(Data);
 
     React.useEffect(() => {
-        switch (forcaLevel) {
+        switch (vemTudoLogoPorraKKK.forcaLevel) {
             case 0: setFoto(forca0); break;
             case 1: setFoto(forca1); break;
             case 2: setFoto(forca2); break;
@@ -31,22 +27,25 @@ function Forca(props){
             case 4: setFoto(forca4); break;
             case 5: setFoto(forca5); break;
             case 6: setFoto(forca6); break;
+            default: break;
         }
-    }, [forcaLevel])
+    }, [vemTudoLogoPorraKKK.forcaLevel])
 
-    function resetPalavra(){
-        let aleatorio =  Math.round(Math.random() * (0, props.compilado.length))
-        setForcaPalavra(props.compilado[aleatorio]);
-    }
 
     return (
         <BaseForca>
             <div>
-                <img src={foto} alt="forca" />
+                <img 
+                    data-identifier="game-image"
+                    src={foto} alt="forca" 
+                />
             </div>
             <div>
-                <Butaum onClick={resetPalavra}>Escolher Palavra</Butaum>
-                <Letreiro palavra={forcaPalavra} />
+                <Butaum 
+                    onClick={() => vemTudoLogoPorraKKK.startGame()}
+                    data-identifier="choose-word"
+                >Escolher Palavra</Butaum>
+                <Letreiro palavra={vemTudoLogoPorraKKK.forcaPalavra} />
             </div>
         </BaseForca>
     )
