@@ -4,43 +4,44 @@ import styled from "styled-components";
 import Tecla from "./Tecla";
 import Resposta from "./Resposta";
 
+
 function Teclado() {
+    
     return (
         <>
             <TecladoStyle>
                 <Keys>
                     <KeyList>
-                        <Tecla keyb="Q" />
-                        <Tecla keyb="W" />
-                        <Tecla keyb="E" />
-                        <Tecla keyb="R" />
-                        <Tecla keyb="T" />
-                        <Tecla keyb="Y" />
-                        <Tecla keyb="U" />
-                        <Tecla keyb="I" />
-                        <Tecla keyb="O" />
-                        <Tecla keyb="P" />
+                        <Tecla keyb="q" />
+                        <Tecla keyb="w" />
+                        <Tecla keyb="e,é,ê" />
+                        <Tecla keyb="r" />
+                        <Tecla keyb="t" />
+                        <Tecla keyb="y,ý" />
+                        <Tecla keyb="u,ú,û" />
+                        <Tecla keyb="i,í,î" />
+                        <Tecla keyb="o,ó,ô,õ" />
+                        <Tecla keyb="p" />
                     </KeyList>
                     <KeyList>
-                        <Tecla keyb="A" />
-                        <Tecla keyb="S" />
-                        <Tecla keyb="D" />
-                        <Tecla keyb="F" />
-                        <Tecla keyb="G" />
-                        <Tecla keyb="H" />
-                        <Tecla keyb="J" />
-                        <Tecla keyb="K" />
-                        <Tecla keyb="L" />
-                        <Tecla keyb="Ç" />
+                        <Tecla keyb="a,á,ã,â" />
+                        <Tecla keyb="s" />
+                        <Tecla keyb="d" />
+                        <Tecla keyb="f" />
+                        <Tecla keyb="g" />
+                        <Tecla keyb="h" />
+                        <Tecla keyb="j" />
+                        <Tecla keyb="k" />
+                        <Tecla keyb="l" />
                     </KeyList>
                     <KeyList>
-                        <Tecla keyb="Z" />
-                        <Tecla keyb="X" />
-                        <Tecla keyb="C" />
-                        <Tecla keyb="V" />
-                        <Tecla keyb="B" />
-                        <Tecla keyb="N" />
-                        <Tecla keyb="M" />
+                        <Tecla keyb="z" />
+                        <Tecla keyb="x" />
+                        <Tecla keyb="c,ç" />
+                        <Tecla keyb="v" />
+                        <Tecla keyb="b" />
+                        <Tecla keyb="n" />
+                        <Tecla keyb="m" />
                     </KeyList>
                 </Keys>
                 <Resposta />
