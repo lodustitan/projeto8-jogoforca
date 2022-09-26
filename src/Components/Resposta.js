@@ -63,6 +63,10 @@ const RespostaStyle = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin-top: 2rem;
+    span{
+        color: white;
+        text-align: center;
+    }
     input{
         width: 60%;
         height: 2rem;
@@ -75,6 +79,13 @@ const RespostaStyle = styled.div`
         font-weight: 800;
         height: 2rem;
     }
+    @media screen and (max-width: 760px) {
+        flex-direction: column;
+        input{
+            width: 90%;
+            margin: .5rem 0;
+        }
+    }   
 `;
 
 export default Resposta;

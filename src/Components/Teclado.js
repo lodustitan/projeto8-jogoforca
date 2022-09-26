@@ -53,10 +53,16 @@ function Teclado() {
 
 // Style SCSS
 const TecladoStyle = styled.div`
+font-family: 'Source Sans Pro', sans-serif;
+min-width: 345px;
+background-color: #6aa84f;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 35%;
+    @media screen and (max-width: 760px){
+        width: 100%;
+    }
 `;
 const Keys = styled.div`
     display: flex;
@@ -69,6 +75,9 @@ const KeyList = styled.div`
     margin-top: 6px;
     div{
         margin: 0 6px;
+    }
+    @media screen and (max-width: 760px){
+        max-width: 100%;
     }
 `;
 

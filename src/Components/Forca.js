@@ -65,6 +65,9 @@ const Butaum = styled.button`
     cursor: pointer;
 `;
 const BaseForca = styled.div`
+font-family: 'Source Sans Pro', sans-serif;
+min-width: 345px;
+background-color: #9fc5e8;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -76,6 +79,18 @@ const BaseForca = styled.div`
     }
     img {
         height: 400px;
+    }
+    @media screen and (max-width: 760px){
+        flex-direction: column-reverse;
+        
+        div{
+            width: 100%;
+            margin-top: 1rem;
+            align-items: center;    
+        }
+        img {
+            /* width: 70%;  */
+        }
     }
 `; 
 

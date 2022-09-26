@@ -1,5 +1,6 @@
 import React from "react";
 
+import "./reset.css"
 import Forca from "./Forca";
 import Teclado from "./Teclado";
 
